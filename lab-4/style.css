@@ -1,0 +1,67 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #dac8c8;
+}
+
+center {
+    display: block;
+    text-align: center;
+}
+
+h1 {
+    color: #d45151;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    
+}
+
+h4 {
+    color: #6b1e1e;
+    font-family: cursive;
+}
+
+b {
+    color: #541010;
+    font-family: 'Protest Guerrilla';
+}
+p{
+  color: #2bbd83;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+table, th, td {
+    border: 1px solid #999;
+    border-collapse: collapse;
+    padding: 10px;
+}
+
+th, td {
+    text-align: center;    
+}
+
+th{
+  color: #07054b;
+  font-size: x-large;
+  font-family: 'Pinyon Script';
+}
+td{
+  color: #d45151;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+table.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+article {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #08055c;
+}
