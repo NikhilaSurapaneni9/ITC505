@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Temperature Converter</h1>
+    </header>
+    <div class="container">
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <main class="converter">
+            <input type="number" id="temperature" placeholder="Enter temperature">
+            <select id="unit">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+            </select>
+            <button id="convert-btn">Convert</button>
+
+            <p id="result"></p>
+        </main>
+        <aside class="advertisement">
+            <a href="https://www.amazon.com/Temperature-Conversion-Fahrenheit-Classroom-Education/dp/B0CL4QG71B" target="_blank">
+                <img src="Temp.jpg" alt="Advertisement">
+            </a>
+        </aside>
+    </div>
+    <footer>
+        <div class="addendum">
+            <p>Addendum:</p>
+            <p>This is a temperature converter application built with HTML, CSS, and JavaScript. It allows users to convert temperatures between Celsius and Fahrenheit.</p>
+            <p>Solution:</p>
+            <p>The JavaScript code retrieves the temperature value and selected unit from the input fields, performs the conversion, and displays the result. CSS is used for styling the layout and elements.</p>
+            <p>Difficulties Encountered:</p>
+            <p>Ensuring accurate temperature conversion and handling user input validation were the main challenges. These were addressed by implementing proper error handling and validation checks.</p>
+        </div>
+        <p>Last updated: <span id="lastModified"></span></p>
+    </footer>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+        
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: auto;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+}
+
+/* Header styles */
+header {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Container styles */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr  1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+    "nav converter advertisement"
+    "nav converter advertisement"
+    "footer footer footer";
+    grid-gap: auto;
+    height: 60vh;
+    padding: 30px;
+}
+
+/* Navigation styles */
+nav {
+    grid-area: nav;
+    background-color: #34495e;
+   
+    
+    padding: 180px ;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    
+}
+
+nav li {
+    display: inline;
+    
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    
+}
+
+/* Converter styles */
+.converter {
+    grid-area: converter;
+    background-color: #fff;
+    padding: 200px;
+    border-radius: auto;
+
+    flex: 1;
+    
+    text-align: center;
+    
+}
+button{
+       padding: 10px 20px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}main.converter p#result {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+
+/* Advertisement styles */
+.advertisement {
+    grid-area: advertisement;
+    flex: 1;
+    text-align: center
+}
+
+.advertisement img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Footer styles */
+footer {
+    grid-area: footer;
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    
+}
+
+.addendum {
+    text-align: left;
+    padding: 20px;
+}
+
+.addendum p {
+    margin-bottom: 10px;
+}
