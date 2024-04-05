@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Survival Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Survival Game</h1>
+    </header>
+
+    <div class="container">
+        <div id="game">
+            <div id="content">
+                <div id="story"></div>
+                <div id="choices"></div>
+            </div>
+            <div id="image"></div>
+            <div id="buttons">
+                <button id="startButton">Start Game</button>
+                <button id="refreshButton" style="display: none;">Refresh Game</button>
+                <button id="endButton" style="display: none;">End Game</button>
+            </div>
+            <div id="addendum" style="display: none;">
+                <h2>Addendum</h2>
+                <p>
+                    <b>Game Design:</b> <br>This survival game presents players with various choices as they navigate through a dense forest. Each decision influences the outcome, leading to different endings. The game starts with the player lost in the forest and progresses through stages based on their choices, culminating in either survival or failure.<br><br>
+                    <b>Implementation Details: </b><br>
+                     <b>HTML Structure: </b>The HTML file sets up the basic structure of the game, including the header, game container, story content, choice buttons, and image display area.
+                     <br>
+                     <b>JavaScript Logic: </b>The JavaScript file defines the game stages, handles user choices, updates the page content accordingly, and manages game state transitions.
+                     <br>
+                     <b>CSS Styling: </b> CSS file styles the game interface, ensuring visual appeal and proper layout alignment.<br><br>
+                    <b>Creative Choices and Challenges: </b><br>
+                    <b>Choice Consequences:</b> Designing meaningful consequences for each choice was crucial to engaging gameplay. Balancing the outcomes to provide both success and failure paths added depth to the player experience.
+                    <br>
+                    <b>Visual Presentation: </b> images related to each stage enhanced immersion and provided visual cues for players to contextualize their decisions.
+                     <br>
+                    <b>User Interface Design: </b>Creating an intuitive and visually pleasing interface required careful consideration of layout, typography, and color schemes.<br>
+                    <b>Insights Gained:</b>
+                    Testing and refining the game iteratively helped identify and address bugs, improve usability, and enhance player engagement.<br>
+                    <b>Player Feedback:</b> Soliciting feedback from playtesters provided valuable insights into areas for improvement, such as clarity of choices, pacing of the narrative, and overall enjoyment.<br><br>
+                    <b>Future Enhancements:</b><br>
+                    <b>Expanded Storylines: </b> more branching paths and narrative complexity could offer deeper replay value and storytelling depth.<br>
+                    <b>Dynamic Elements:</b> Introducing dynamic elements such as random events or interactive puzzles could further enrich the gameplay experience.<br>
+                    <b>Accessibility Features: </b>Incorporating accessibility features like text-to-speech support or customizable text sizes could make the game more inclusive and enjoyable for all players.<br><br>
+                    <b> Conclusion: </b> <br> Building a Survival game involves a balance of  game mechanics, and user experience design. By following best practices and incorporating creative elements, the resulting game offers players an immersive and engaging journey through the forest, where their decisions shape their fate.
+                </p>
+            </div>
+            <footer>
+                <p>Last updated: <span id="lastModified"></span></p>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+    <script type="text/javascript">
+        var x = document.lastModified;
+        document.getElementById('lastModified').textContent = x;
+    </script>
+</body>
+</html>
