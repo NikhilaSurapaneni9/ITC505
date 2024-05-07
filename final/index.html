@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights Out</title>
+  <style>
+   body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 20px;
+  top:10%;
+  position: relative; /* Add position relative to the body */
+  background-image: url('image.jpg');
+}
+
+h1 {
+  text-align: center;
+  margin-top: 5px;
+  position: absolute;
+  top: 5%; /* Position at the top of the body */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center horizontally */
+}
+    
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 50px);
+      grid-template-rows: repeat(5, 50px);
+      gap: 2px;
+      top:15%;
+      left:42%;
+      position: absolute;
+     
+    }
+    .cell {
+      background-color: #eee;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+    .cell.on {
+      background-color: #333;
+    }
+    .button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    button {
+      margin-right: 10px;
+    }
+    .info-container {
+      margin-top: 10px;
+      text-align: center;
+      top:55%;
+      left:45%;
+      position: absolute;
+    }
+    footer {
+      bottom: auto;
+    position: absolute;
+      text-align: center;
+      left:43%;
+      color: #090511;
+      
+    }
+    .addendum{
+      margin-top: 40%;
+      text-align: center;
+      right:60%;
+      position: relative;
+       transform: translateX(60%); 
+
+    }
+  </style>
+</head>
+<body>
+<section>
+  <h1>LIGHTS OUT</h1>
+  <br>
+  <div class="grid" id="grid"></div>
+  <br>
+  <div class="info-container">
+    <div>
+      <span>Time Remaining: <span id="timer"></span> seconds</span>
+    </div>
+    <br>
+    <div class="button-container">
+      <button onclick="refreshGame()">Refresh Game</button>
+    </div>
+  </div>
+  <div class="addendum">
+  <h2><strong>Addendum:</strong></h2>
+  <p>
+    This web-based "Lights Out" game was developed using an accurate approach that included creative decisions, challenges faced, and lessons learned.</p>
+  </p>
+  <p>
+    The method used with developing the functionality and overall framework of the game. The visual design, which includes the grid arrangement, cell appearance, and user interface elements, was carefully chosen.  </p>
+  <p>
+    Difficulties occurred during the implementation phase, such as handling the game logic and ensuring smooth interaction between HTML and JavaScript parts. In order to overcome these obstacles and develop more understanding of JavaScript's event-driven design, debugging sessions were important.  </p>
+    <p>
+      A crucial aspect of the development process involved ensuring accessibility and user experience. Challenges arose in maintaining consistency in layout and functionality across different platforms.</p>    
+  <p>
+    As the development process progressed, the significance of responsive design became evident. There were difficulties in adjusting the layout to different screen sizes, but they were resolved by trying with different devices and making CSS modifications.  </p>
+  <p>
+    The development process was a blend of creativity, problem-solving, and continuous learning. Insights gained from overcoming challenges not only improved the game's functionality but also enriched understanding of web development principles.
+  </p>
+</div>
+
+</section>
+<section>
+  <footer>
+    <p>Last updated: 
+        <span id="lastModified"></span>
+    </p>
+</footer>
+<script type="text/javascript">
+     var x = document.lastModified;
+     document.getElementById('lastModified').textContent = x;
+</script>
+</section>
+
+<script >
+let targets = 25;
+let time = 220;
+let timerInterval;
+let grid = [];
+
+function setTargets(numTargets) {
+  targets = numTargets;
+  refreshGame();
+}
+
+function setTime(seconds) {
+  time = seconds;
+}
+
+function startTimer() {
+  let secondsRemaining = time;
+  console.log(secondsRemaining);
+  // updateTimerDisplay(secondsRemaining);
+  timerInterval = setInterval(() => {
+    secondsRemaining--;
+    updateTimerDisplay(secondsRemaining);
+    if (secondsRemaining === 0) {
+      clearInterval(timerInterval);
+      alert('Time is up! Game over.');
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(seconds) {
+  
+  document.getElementById('timer').textContent = seconds;
+}
+
+function createGrid() {
+  const gridContainer = document.getElementById('grid');
+  gridContainer.innerHTML = ''; // Clear previous grid
+  grid = []; // Reset grid array
+  for (let i = 0; i < 5; i++) {
+    for (let j = 0; j < 5; j++) {
+      const cell = document.createElement('div');
+      cell.classList.add('cell');
+      cell.dataset.row = i;
+      cell.dataset.col = j;
+      gridContainer.appendChild(cell);
+      grid.push(cell);
+    }
+  }
+}
+
+function toggleCell(row, col) {
+  const cellIndex = row * 5 + col;
+  grid[cellIndex].classList.toggle('on');
+}
+
+function toggleNeighbors(row, col) {
+  toggleCell(row, col); // Toggle the current cell
+
+  // Toggle the neighboring cells
+  toggleSafe(row - 1, col); // Top cell
+  toggleSafe(row + 1, col); // Bottom cell
+  toggleSafe(row, col - 1); // Left cell
+  toggleSafe(row, col + 1); // Right cell
+}
+
+function toggleSafe(row, col) {
+  // Check if the row and column indices are within bounds
+  if (row >= 0 && row < 5 && col >= 0 && col < 5) {
+    toggleCell(row, col); // Toggle the cell if it's within bounds
+  }
+}
+
+function checkWin() {
+  return grid.filter(cell => cell.classList.contains('on')).length === targets;
+}
+
+function handleClick(event) {
+  const row = parseInt(event.target.dataset.row);
+  const col = parseInt(event.target.dataset.col);
+  toggleNeighbors(row, col);
+  if (checkWin()) {
+    clearInterval(timerInterval);
+    alert('Congratulations! You won!');
+  }
+}
+
+function refreshGame() {
+  clearInterval(timerInterval);
+  createGrid();
+  updateTimerDisplay(time);
+  document.querySelectorAll('.cell').forEach(cell => {
+    cell.addEventListener('click', handleClick);
+  });
+
+	setTimeout(startTimer, 100); // Adjust delay as needed
+  // Toggle a few cells initially
+  for (let i = 0; i < 5; i++) { // Change 5 to the desired number of initial toggled cells
+    let randomRow, randomCol;
+    do {
+      randomRow = Math.floor(Math.random() * 5); // Random row index (0 to 4)
+      randomCol = Math.floor(Math.random() * 5); // Random column index (0 to 4)
+    } while (randomRow < 0 || randomRow >= 5 || randomCol < 0 || randomCol >= 5);
+    toggleNeighbors(randomRow, randomCol); // Toggle cell and its neighbors
+  }
+  
+
+
+  // startTimer(); // Start the timer after grid initialization
+}
+
+refreshGame(); // Initialize game on page load
+
+</script>
+
+
+</body>
+</html>
